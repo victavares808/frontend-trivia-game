@@ -5,3 +5,6 @@
 //   token: token_recebido_pela_API
 // }
 
+// const tokenFromApi = () => {
+
+// }

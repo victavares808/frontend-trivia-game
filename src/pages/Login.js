@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import logo from '../trivia.png';
+import Button from '../components/Button';
+import { fetchToken } from '../services/triviaApi';
 
-export default class Login extends Component {
+class Login extends Component {
   constructor() {
     super();
 
@@ -30,6 +34,13 @@ export default class Login extends Component {
         disabled: false,
       });
     }
+  }
+
+  handleClick = async () => {
+    const { history } = this.props;
+    const token = await fetchToken();
+    localStorage.setItem('token', token);
+    history.push('./game');
   }
 
   render() {
@@ -64,15 +75,19 @@ export default class Login extends Component {
             />
           </label>
 
-          <button
-            type="button"
-            data-testid="btn-play"
+          <Button
+            className="PLAY__BTN"
+            onClick={ this.handleClick }
             disabled={ disabled }
-          >
-            Play
-          </button>
+          />
         </main>
       </div>
     );
   }
 }
+
+Login.propTypes = {
+  history: PropTypes.shape({ push: PropTypes.func }).isRequired,
+};
+
+export default connect()(Login);

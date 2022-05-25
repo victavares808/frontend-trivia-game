@@ -36,11 +36,16 @@ class Login extends Component {
     }
   }
 
-  handleClick = async () => {
+  playClick = async () => {
     const { history } = this.props;
     const token = await fetchToken();
     localStorage.setItem('token', token);
     history.push('./game');
+  }
+
+  settingsClick = async () => {
+    const { history } = this.props;
+    history.push('./settings');
   }
 
   render() {
@@ -77,8 +82,16 @@ class Login extends Component {
 
           <Button
             className="PLAY__BTN"
-            onClick={ this.handleClick }
+            onClick={ this.playClick }
             disabled={ disabled }
+            name="Play"
+            testId="btn-play"
+          />
+          <Button
+            className="SETTINGS__BTN"
+            onClick={ this.settingsClick }
+            name="Settings"
+            testId="btn-settings"
           />
         </main>
       </div>

@@ -102,5 +102,5 @@ class Login extends Component {
 Login.propTypes = {
   history: PropTypes.shape({ push: PropTypes.func }).isRequired,
 };
-
+// Vamo que vamo
 export default connect()(Login);

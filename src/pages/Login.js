@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../trivia.png';
 
-export default class Login extends Component {
+class Login extends Component {
   constructor() {
     super();
 
@@ -76,3 +76,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default Login;

@@ -9,7 +9,8 @@ describe('Testa a página de Login', () => {
     renderWithRouterAndRedux(<Login />)
     const nameInput = screen.getByLabelText(/name/i);
     const emailInput = screen.getByLabelText(/email/i);
+    const playBtn = 
     expect(nameInput).toBeInTheDocument();
     expect(emailInput).toBeInTheDocument();
   });
-});
+}); // asdfas

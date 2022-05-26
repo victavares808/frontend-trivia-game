@@ -1,7 +1,7 @@
 // import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-export class Settings extends Component {
+class Settings extends Component {
   render() {
     return (
       <div>

@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import {
   SET_IMG,
   SET_USER_NAME,
@@ -47,21 +46,4 @@ const playerReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export const setUserImg = (img) => ({
-  type: SET_IMG,
-  payload: img,
-});
-
-export const setUserName = (name) => ({
-  type: SET_USER_NAME,
-  payload: name,
-});
-
-export const setUserEmail = (email) => ({
-  type: SET_USER_EMAIL,
-  payload: email,
-});
-
-const rootReducer = combineReducers({ playerReducer });
-
-export default rootReducer;
+export default playerReducer;

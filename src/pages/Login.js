@@ -7,7 +7,7 @@ import {
   setUserImg,
   setUserName,
   setUserEmail,
-} from '../redux/reducer/player';
+} from '../redux/actions/index';
 import fetchGravatar from '../services/gravatarAPI';
 
 class Login extends Component {

@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import logo from '../trivia.png';
 import Button from '../components/Button';
 import { fetchToken } from '../services/triviaApi';
+import {
+  setUserImg,
+  setUserName,
+  setUserEmail,
+} from '../redux/reducer/player';
+import fetchGravatar from '../services/gravatarAPI';
 
 class Login extends Component {
   constructor() {
@@ -37,6 +42,16 @@ class Login extends Component {
   }
 
   playClick = async () => {
+    const {
+      writeUserImg,
+      writeUserName,
+      writeUserEmail,
+    } = this.props;
+    const { email, name } = this.state;
+    const img = fetchGravatar(email);
+    writeUserImg(img);
+    writeUserName(name);
+    writeUserEmail(email);
     const token = await fetchToken();
     localStorage.setItem('token', token);
   }
@@ -45,11 +60,6 @@ class Login extends Component {
     const { name, email, disabled } = this.state;
     return (
       <div>
-        <div className="App">
-          <header className="App-header">
-            <img src={ logo } className="App-logo" alt="logo" />
-          </header>
-        </div>
         <main>
           <label htmlFor="inputName">
             Name
@@ -96,7 +106,14 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  history: PropTypes.shape({ push: PropTypes.func }).isRequired,
-};
-// Vamo que vamo
-export default connect()(Login);
+  history: PropTypes.shape({ push: PropTypes.func }),
+  writeUserImg: PropTypes.func,
+}.isRequired;
+
+const mapDispatchToProps = (dispatch) => ({
+  writeUserImg: (img) => dispatch(setUserImg(img)),
+  writeUserName: (name) => dispatch(setUserName(name)),
+  writeUserEmail: (email) => dispatch(setUserEmail(email)),
+});
+
+export default connect(null, mapDispatchToProps)(Login);

@@ -36,7 +36,6 @@ class Feedback extends Component {
   }
 
   render() {
-    const { feedbackMessage, totalScore, totalQuestion, playAgainRedirect } = this;
     return (
       <div>
         <Header />

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
+import Button from '../components/Button';
 
 class Feedback extends Component {
   feedbackMessage = () => {
@@ -29,8 +30,13 @@ class Feedback extends Component {
     return <h2 data-testid="feedback-total-question">{ assertions }</h2>;
   }
 
+  playAgainRedirect = () => {
+    const { history } = this.props;
+    history.push('/');
+  }
+
   render() {
-    const { feedbackMessage, totalScore, totalQuestion } = this;
+    const { feedbackMessage, totalScore, totalQuestion, playAgainRedirect } = this;
     return (
       <div>
         <Header />
@@ -43,6 +49,11 @@ class Feedback extends Component {
         <div>
           { totalQuestion() }
         </div>
+        <Button
+          name="Play Again"
+          testId="btn-play-again"
+          onClick={ playAgainRedirect }
+        />
       </div>
     );
   }
@@ -50,6 +61,8 @@ class Feedback extends Component {
 
 Feedback.propTypes = {
   assertions: PropTypes.number,
+  history: PropTypes.shape({
+    push: PropTypes.func }),
 }.isRequired;
 
 const mapStateToProps = (state) => ({

@@ -7,7 +7,7 @@ import {
   setUserImg,
   setUserName,
   setUserEmail,
-} from '../redux/reducer/player';
+} from '../redux/actions/index';
 import fetchGravatar from '../services/gravatarAPI';
 
 class Login extends Component {
@@ -42,6 +42,8 @@ class Login extends Component {
   }
 
   playClick = async () => {
+    const token = await fetchToken();
+    localStorage.setItem('token', token);
     const {
       writeUserImg,
       writeUserName,
@@ -52,8 +54,13 @@ class Login extends Component {
     writeUserImg(img);
     writeUserName(name);
     writeUserEmail(email);
-    const token = await fetchToken();
-    localStorage.setItem('token', token);
+    const { history } = this.props;
+    history.push('/game');
+  }
+
+  settingsClick = () => {
+    const { history } = this.props;
+    history.push('/settings');
   }
 
   render() {
@@ -95,6 +102,7 @@ class Login extends Component {
           />
           <Button
             className="SETTINGS__BTN"
+            onClick={ this.settingsClick }
             name="Settings"
             path="/settings"
             testId="btn-settings"

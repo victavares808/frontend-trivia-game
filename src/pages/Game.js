@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
 import { fetchQuiz } from '../services/triviaApi';
-import { setQuiz } from '../redux/actions/index';
 import Question from '../components/Question';
 import Loading from '../components/Loading';
 
@@ -15,30 +14,26 @@ class Game extends Component {
   }
 
   async componentDidMount() {
-    this.quizRequest();
+    await this.quizRequest();
   }
 
     quizRequest = async () => {
-      this.setState({
-        loading: true,
-      });
-      const { getQuiz, history } = this.props;
       const token = localStorage.getItem('token');
       const quiz = await fetchQuiz(token);
+      const { history } = this.props;
       if (quiz.response_code === invalidTokenId) {
         localStorage.removeItem('token');
         history.push('/');
       } else {
-        getQuiz(quiz);
         this.setState({
+          questions: quiz.results,
           loading: false,
         });
       }
     }
 
     render() {
-      const { quests } = this.props;
-      const { loading } = this.state;
+      const { loading, questions: quests } = this.state;
       return (
         <div>
           <Header />
@@ -56,12 +51,4 @@ Game.propTypes = {
   }),
 }.isRequired;
 
-const mapStateToProps = (state) => ({
-  quests: state.quizReducer.quests,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getQuiz: (quiz) => dispatch(setQuiz(quiz)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Game);
+export default connect()(Game);

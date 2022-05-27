@@ -8,8 +8,6 @@ export const SET_ASSERTIONS_NUMBER = 'SET_ASSERTIONS_NUMBER';
 
 export const SET_SCORE = 'SET_SCORE';
 
-export const SET_QUIZ = 'GET_QUIZ';
-
 export const setUserImg = (img) => ({
   type: SET_IMG,
   payload: img,
@@ -23,9 +21,4 @@ export const setUserName = (name) => ({
 export const setUserEmail = (email) => ({
   type: SET_USER_EMAIL,
   payload: email,
-});
-
-export const setQuiz = (quiz) => ({
-  type: SET_QUIZ,
-  payload: quiz.results,
 });

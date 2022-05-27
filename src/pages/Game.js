@@ -9,16 +9,44 @@ import Loading from '../components/Loading';
 
 const invalidTokenId = 3;
 
+const ONE_SECOND = 1000;
+
 class Game extends Component {
   state = {
     loading: true,
     questionNumber: 0,
     showStyle: false,
     answers: [],
+    timer: 30,
+    isBtnDisabled: false,
+    showNextBtn: false,
   }
 
   async componentDidMount() {
     await this.quizRequest();
+    this.timeInterval();
+  }
+
+  timeInterval = () => {
+    const interval = setInterval(() => {
+      this.setState(
+        (prevState) => ({
+          timer: prevState.timer - 1,
+        }),
+        () => {
+          const { timer } = this.state;
+          if (timer === 0) {
+            this.setState(
+              () => ({
+                isBtnDisabled: true,
+                showNextBtn: true,
+              }),
+              () => clearInterval(interval),
+            );
+          }
+        },
+      );
+    }, ONE_SECOND);
   }
 
     quizRequest = async () => {
@@ -75,21 +103,37 @@ class Game extends Component {
         (prevState) => ({
           questionNumber: prevState.questionNumber + 1,
           showStyle: false,
+          isBtnDisabled: false,
+          timer: 30,
         }),
         () => this.shuffleAnswers(),
+        () => this.timeInterval(),
       );
+    } else {
+      const { history } = this.props;
+      history.push('/feedback');
     }
   }
 
   changeShowStyleState = () => {
     this.setState({
+      isBtnDisabled: true,
+      showNextBtn: true,
       showStyle: true,
     });
   }
 
   render() {
     const { quests } = this.props;
-    const { loading, answers, showStyle, questionNumber } = this.state;
+    const {
+      loading,
+      answers,
+      showStyle,
+      questionNumber,
+      timer,
+      isBtnDisabled,
+      showNextBtn,
+    } = this.state;
     return (
       <div>
         <Header />
@@ -100,6 +144,9 @@ class Game extends Component {
           answers={ answers }
           showStyle={ showStyle }
           questionNumber={ questionNumber }
+          timer={ timer }
+          isBtnDisabled={ isBtnDisabled }
+          showNextBtn={ showNextBtn }
         />)}
       </div>
     );

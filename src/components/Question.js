@@ -35,9 +35,15 @@ class Question extends Component {
       showStyle,
       changeShowStyleState,
       nextQuestion,
+      timer,
+      isBtnDisabled,
+      showNextBtn,
     } = this.props;
     return (
       <div>
+        <h1>
+          { timer }
+        </h1>
         <h1 data-testid="question-text">{ questions[questionNumber].question }</h1>
         <h3 data-testid="question-category">{ questions[questionNumber].category }</h3>
         <div data-testid="answer-options">
@@ -52,6 +58,7 @@ class Question extends Component {
                     { border: '3px solid rgb(6, 240, 15)' })
                     : { border: '3px solid black' } }
                   onClick={ changeShowStyleState }
+                  disabled={ isBtnDisabled }
                 >
                   { answer }
                 </button>
@@ -65,17 +72,20 @@ class Question extends Component {
                   { border: '3px solid red' }
                 ) : { border: '3px solid black' } }
                 onClick={ changeShowStyleState }
+                disabled={ isBtnDisabled }
               >
                 { answer }
               </button>
             );
           })}
-          <button
-            type="button"
-            onClick={ nextQuestion }
-          >
-            Next
-          </button>
+          { showNextBtn ? (
+            <button
+              type="button"
+              onClick={ nextQuestion }
+            >
+              Next
+            </button>
+          ) : ''}
         </div>
       </div>
     );

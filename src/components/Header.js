@@ -35,9 +35,9 @@ Header.propTypes = {
 }.isRequired;
 
 const mapStateToProps = (state) => ({
-  img: state.playerReducer.img,
-  name: state.playerReducer.name,
-  score: state.playerReducer.score,
+  img: state.player.img,
+  name: state.player.name,
+  score: state.player.score,
 });
 
 export default connect(mapStateToProps)(Header);

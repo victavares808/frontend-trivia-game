@@ -35,23 +35,33 @@ class Feedback extends Component {
     history.push('/');
   }
 
+  rankingRedirect = () => {
+    const { history } = this.props;
+    history.push('/ranking');
+  }
+
   render() {
     return (
       <div>
         <Header />
         <div>
-          { feedbackMessage() }
+          { this.feedbackMessage() }
         </div>
         <div>
-          { totalScore() }
+          { this.totalScore() }
         </div>
         <div>
-          { totalQuestion() }
+          { this.totalQuestion() }
         </div>
         <Button
           name="Play Again"
           testId="btn-play-again"
-          onClick={ playAgainRedirect }
+          onClick={ this.playAgainRedirect }
+        />
+        <Button
+          name="Ranking"
+          testId="btn-ranking"
+          onClick={ this.rankingRedirect }
         />
       </div>
     );

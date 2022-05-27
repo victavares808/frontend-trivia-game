@@ -27,8 +27,12 @@ class Game extends Component {
     this.timeInterval();
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timeInterval);
+  }
+
   timeInterval = () => {
-    const interval = setInterval(() => {
+    this.interval = setInterval(() => {
       this.setState(
         (prevState) => ({
           timer: prevState.timer - 1,
@@ -41,7 +45,7 @@ class Game extends Component {
                 isBtnDisabled: true,
                 showNextBtn: true,
               }),
-              () => clearInterval(interval),
+              () => clearInterval(this.interval),
             );
           }
         },
@@ -107,7 +111,6 @@ class Game extends Component {
           timer: 30,
         }),
         () => this.shuffleAnswers(),
-        () => this.timeInterval(),
       );
     } else {
       const { history } = this.props;
@@ -115,7 +118,7 @@ class Game extends Component {
     }
   }
 
-  changeShowStyleState = () => {
+  changeBoolState = () => {
     this.setState({
       isBtnDisabled: true,
       showNextBtn: true,
@@ -139,7 +142,7 @@ class Game extends Component {
         <Header />
         { loading ? <Loading /> : (<Question
           questions={ quests }
-          changeShowStyleState={ this.changeShowStyleState }
+          changeBoolState={ this.changeBoolState }
           nextQuestion={ this.nextQuestion }
           answers={ answers }
           showStyle={ showStyle }

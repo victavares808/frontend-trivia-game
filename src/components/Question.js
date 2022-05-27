@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { setScore } from '../redux/actions/index';
 
 class Question extends Component {
   nextQuestion = () => {
@@ -13,10 +14,29 @@ class Question extends Component {
     }
   }
 
-  choseAnswer = ({ target: { kind, style } }) => {
-    if (kind === 'correct-answer') {
-      style.border = '3px solid rgb(6, 240, 15)';
-    }
+  scoring = () => {
+    const TEN = 10;
+    const {
+      questions,
+      changeBoolState,
+      questionNumber,
+      timer,
+      settingScore,
+    } = this.props;
+    changeBoolState();
+    const { difficulty } = questions[questionNumber];
+    const difficultyScoreTable = {
+      hard: 3,
+      medium: 2,
+      easy: 1,
+    };
+    const score = (TEN + (timer * difficultyScoreTable[difficulty]));
+    settingScore(score);
+  }
+
+  notScoring = () => {
+    const { changeBoolState } = this.props;
+    changeBoolState();
   }
 
   // Source: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm;
@@ -33,7 +53,6 @@ class Question extends Component {
       questionNumber,
       answers,
       showStyle,
-      changeShowStyleState,
       nextQuestion,
       timer,
       isBtnDisabled,
@@ -57,7 +76,7 @@ class Question extends Component {
                   style={ showStyle ? (
                     { border: '3px solid rgb(6, 240, 15)' })
                     : { border: '3px solid black' } }
-                  onClick={ changeShowStyleState }
+                  onClick={ this.scoring }
                   disabled={ isBtnDisabled }
                 >
                   { answer }
@@ -71,7 +90,7 @@ class Question extends Component {
                 style={ showStyle ? (
                   { border: '3px solid red' }
                 ) : { border: '3px solid black' } }
-                onClick={ changeShowStyleState }
+                onClick={ this.notScoring }
                 disabled={ isBtnDisabled }
               >
                 { answer }
@@ -82,6 +101,7 @@ class Question extends Component {
             <button
               type="button"
               onClick={ nextQuestion }
+              data-testid="btn-next"
             >
               Next
             </button>
@@ -96,4 +116,8 @@ Question.propTypes = {
   questions: PropTypes.arrayOf(),
 }.isRequired;
 
-export default connect()(Question);
+const mapDispatchToProps = (dispatch) => ({
+  settingScore: (score) => dispatch(setScore(score)),
+});
+
+export default connect(null, mapDispatchToProps)(Question);

@@ -18,11 +18,11 @@ class Header extends Component {
           >
             { name }
           </h3>
-          <p
+          <h5
             data-testid="header-score"
           >
             { score }
-          </p>
+          </h5>
         </header>
       </div>
     );
@@ -30,7 +30,6 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  disabled: PropTypes.func,
   name: PropTypes.string,
   score: PropTypes.number,
 }.isRequired;

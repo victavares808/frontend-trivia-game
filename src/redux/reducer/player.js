@@ -34,7 +34,8 @@ const playerReducer = (state = INITIAL_STATE, action) => {
   case SET_SCORE:
     return {
       ...state,
-      score: action.payload,
+      score: action.payload + state.score,
+      assertions: state.assertions + 1,
     };
   case SET_IMG:
     return {

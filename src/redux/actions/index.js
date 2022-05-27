@@ -29,3 +29,8 @@ export const setQuiz = (quiz) => ({
   type: SET_QUIZ,
   payload: quiz.results,
 });
+
+export const setScore = (score) => ({
+  type: SET_SCORE,
+  payload: score,
+});

@@ -10,6 +10,8 @@ export const SET_SCORE = 'SET_SCORE';
 
 export const SET_QUIZ = 'SET_QUIZ';
 
+export const SET_SCORE_TO_ZERO = 'SET_SCORE_TO_ZERO';
+
 export const setUserImg = (img) => ({
   type: SET_IMG,
   payload: img,
@@ -33,4 +35,8 @@ export const setQuiz = (quiz) => ({
 export const setScore = (score) => ({
   type: SET_SCORE,
   payload: score,
+});
+
+export const setScoreToZero = () => ({
+  type: SET_SCORE_TO_ZERO,
 });

@@ -4,6 +4,7 @@ import {
   SET_USER_EMAIL,
   SET_ASSERTIONS_NUMBER,
   SET_SCORE,
+  SET_SCORE_TO_ZERO,
 } from '../actions/index';
 
 const INITIAL_STATE = {
@@ -41,6 +42,11 @@ const player = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       img: action.payload,
+    };
+  case SET_SCORE_TO_ZERO:
+    return {
+      ...state,
+      score: 0,
     };
   default:
     return state;

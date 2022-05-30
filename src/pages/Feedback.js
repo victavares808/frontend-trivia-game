@@ -36,6 +36,18 @@ class Feedback extends Component {
   }
 
   rankingRedirect = () => {
+    const { name, score, img } = this.props;
+    let ranking = [];
+    const infos = {
+      name,
+      score,
+      img,
+    };
+    if (localStorage.getItem('ranking')) {
+      ranking = JSON.parse(localStorage.getItem('ranking'));
+    }
+    ranking.push(infos);
+    localStorage.setItem('ranking', JSON.stringify(ranking));
     const { history } = this.props;
     history.push('/ranking');
   }
@@ -72,11 +84,16 @@ Feedback.propTypes = {
   assertions: PropTypes.number,
   history: PropTypes.shape({
     push: PropTypes.func }),
+  name: PropTypes.string,
+  score: PropTypes.number,
 }.isRequired;
 
 const mapStateToProps = (state) => ({
   assertions: state.player.assertions,
   totalScore: state.player.score,
+  name: state.player.name,
+  score: state.player.score,
+  img: state.player.img,
 });
 
 export default connect(mapStateToProps)(Feedback);

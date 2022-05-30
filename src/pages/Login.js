@@ -7,6 +7,7 @@ import {
   setUserImg,
   setUserName,
   setUserEmail,
+  setScoreToZero,
 } from '../redux/actions/index';
 import fetchGravatar from '../services/gravatarAPI';
 
@@ -48,7 +49,9 @@ class Login extends Component {
       writeUserImg,
       writeUserName,
       writeUserEmail,
+      clearScore,
     } = this.props;
+    clearScore();
     const { email, name } = this.state;
     const img = fetchGravatar(email);
     writeUserImg(img);
@@ -122,6 +125,7 @@ const mapDispatchToProps = (dispatch) => ({
   writeUserImg: (img) => dispatch(setUserImg(img)),
   writeUserName: (name) => dispatch(setUserName(name)),
   writeUserEmail: (email) => dispatch(setUserEmail(email)),
+  clearScore: () => dispatch(setScoreToZero()),
 });
 
 export default connect(null, mapDispatchToProps)(Login);

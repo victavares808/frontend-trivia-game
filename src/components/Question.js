@@ -73,6 +73,7 @@ class Question extends Component {
                   type="button"
                   key={ Math.random() }
                   data-testid="correct-answer"
+                  id="correct"
                   style={ showStyle ? (
                     { border: '3px solid rgb(6, 240, 15)' })
                     : { border: '3px solid black' } }

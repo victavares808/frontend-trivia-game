@@ -10,6 +10,7 @@ import {
   setScoreToZero,
 } from '../redux/actions/index';
 import fetchGravatar from '../services/gravatarAPI';
+import '../css/Login.css';
 
 class Login extends Component {
   constructor() {
@@ -69,11 +70,14 @@ class Login extends Component {
   render() {
     const { name, email, disabled } = this.state;
     return (
-      <div>
-        <main>
-          <label htmlFor="inputName">
-            Name
+      <div className="login-container">
+        <main className="login-input-container">
+          <label
+            htmlFor="inputName"
+            className="data-input"
+          >
             <input
+              placeholder="Name"
               name="name"
               id="inputName"
               type="text"
@@ -83,9 +87,12 @@ class Login extends Component {
             />
           </label>
 
-          <label htmlFor="inputEmail">
-            Email
+          <label
+            htmlFor="inputEmail"
+            className="data-input"
+          >
             <input
+              placeholder="E-Mail"
               name="email"
               id="inputEmail"
               type="text"

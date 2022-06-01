@@ -1,0 +1,47 @@
+.login-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-input-container {
+  align-items: center;
+  border: 3px solid red;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  justify-content: center;
+  position: relative;
+  width: 21.5vw;
+}
+
+.login-input-container button {
+  margin-bottom: 15px;
+}
+
+.PLAY__BTN {
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.PLAY__BTN, .SETTINGS__BTN {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.SETTINGS__BTN {
+  border-radius: 50%;
+  bottom: 0;
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  width: 30px;
+}
+
+.data-input {
+  margin: 0 0 15px;
+}
+

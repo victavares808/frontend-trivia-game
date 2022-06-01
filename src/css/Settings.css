@@ -1,0 +1,50 @@
+.settings-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.PAGE__MODE {
+  align-items: center;
+  border-radius: 25px;
+  display: flex;
+  justify-content: space-between;
+  width: 50px;
+}
+
+.unchecked, .checked {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 50px;
+}
+
+.icon {
+  size: 50%;
+}
+
+.unchecked:before, .checked:before {
+  top: calc(50% + 16.5px);
+}
+
+.unchecked:before {
+  background-color: rgb(218, 218, 218);
+  border-radius: 25px;
+  content: '';
+  height: 25px;
+  left: calc(50% - 23px);
+  position: absolute;
+  width: 25px;
+}
+
+.checked:before {
+  background-color: rgb(12, 12, 12);
+  border-radius: 25px;
+  content: '';
+  height: 25px;
+  left: calc(50% - 1px);
+  position: absolute;
+  width: 25px;
+}

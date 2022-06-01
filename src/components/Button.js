@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { FaCog, FaPlay } from 'react-icons/fa';
 
 class Button extends Component {
+  buttonIcon = () => {
+    const { name } = this.props;
+    if (name === 'Settings') {
+      return <FaCog />;
+    } if (name === 'Play') {
+      return <FaPlay />;
+    }
+  }
+
   render() {
-    const { disabled, className, onClick, name, testId } = this.props;
+    const { disabled, className, onClick, testId } = this.props;
     const classe = className;
     return (
       <div>
@@ -15,7 +25,7 @@ class Button extends Component {
           disabled={ disabled }
           onClick={ onClick }
         >
-          { name }
+          { this.buttonIcon() }
         </button>
       </div>
     );

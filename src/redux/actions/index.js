@@ -12,6 +12,8 @@ export const SET_QUIZ = 'SET_QUIZ';
 
 export const SET_SCORE_TO_ZERO = 'SET_SCORE_TO_ZERO';
 
+export const CHANGE_BACKGROUND_COLOR = 'CHANGE_BACKGROUND_COLOR';
+
 export const setUserImg = (img) => ({
   type: SET_IMG,
   payload: img,
@@ -39,4 +41,9 @@ export const setScore = (score) => ({
 
 export const setScoreToZero = () => ({
   type: SET_SCORE_TO_ZERO,
+});
+
+export const changeBackgroundColor = (backgroundColor) => ({
+  type: CHANGE_BACKGROUND_COLOR,
+  payload: backgroundColor,
 });

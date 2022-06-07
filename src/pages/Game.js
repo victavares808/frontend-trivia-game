@@ -116,6 +116,10 @@ class Game extends Component {
       const { history } = this.props;
       history.push('/feedback');
     }
+    this.setState({
+      showStyle: false,
+      showNextBtn: false,
+    });
   }
 
   changeBoolState = () => {

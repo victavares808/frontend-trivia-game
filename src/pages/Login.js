@@ -72,50 +72,41 @@ class Login extends Component {
     return (
       <div className="login-container">
         <main className="login-input-container">
-          <label
-            htmlFor="inputName"
+          <input
             className="data-input"
-          >
-            <input
-              placeholder="Name"
-              name="name"
-              id="inputName"
-              type="text"
-              data-testid="input-player-name"
-              value={ name }
-              onChange={ this.onInputChange }
-            />
-          </label>
-
-          <label
-            htmlFor="inputEmail"
+            placeholder="Name"
+            name="name"
+            id="inputName"
+            type="text"
+            data-testid="input-player-name"
+            value={ name }
+            onChange={ this.onInputChange }
+          />
+          <input
             className="data-input"
-          >
-            <input
-              placeholder="E-Mail"
-              name="email"
-              id="inputEmail"
-              type="text"
-              data-testid="input-gravatar-email"
-              value={ email }
-              onChange={ this.onInputChange }
-            />
-          </label>
+            placeholder="E-Mail"
+            name="email"
+            id="inputEmail"
+            type="text"
+            data-testid="input-gravatar-email"
+            value={ email }
+            onChange={ this.onInputChange }
+          />
 
           <Button
-            className="PLAY__BTN"
             onClick={ this.playClick }
             disabled={ disabled }
             name="Play"
             path="/game"
             testId="btn-play"
+            classe="standard-btn PLAY__BTN"
           />
           <Button
-            className="SETTINGS__BTN"
             onClick={ this.settingsClick }
             name="Settings"
             path="/settings"
             testId="btn-settings"
+            classe="standard-btn SETTINGS__BTN"
           />
         </main>
       </div>

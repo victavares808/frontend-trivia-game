@@ -79,6 +79,7 @@ class Question extends Component {
                     : { border: '3px solid black' } }
                   onClick={ this.scoring }
                   disabled={ isBtnDisabled }
+                  className="standard-btn"
                 >
                   { answer }
                 </button>
@@ -93,6 +94,7 @@ class Question extends Component {
                 ) : { border: '3px solid black' } }
                 onClick={ this.notScoring }
                 disabled={ isBtnDisabled }
+                className="standard-btn"
               >
                 { answer }
               </button>
@@ -103,6 +105,7 @@ class Question extends Component {
               type="button"
               onClick={ nextQuestion }
               data-testid="btn-next"
+              className="standard-btn"
             >
               Next
             </button>

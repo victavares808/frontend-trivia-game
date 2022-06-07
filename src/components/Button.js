@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FaCog, FaPlay } from 'react-icons/fa';
+import { FaCog, FaPlay, FaHome } from 'react-icons/fa';
+import { MdReplay } from 'react-icons/md';
+import { GiPodium } from 'react-icons/gi';
+import '../css/Button.css';
 
 class Button extends Component {
   buttonIcon = () => {
     const { name } = this.props;
-    if (name === 'Settings') {
-      return <FaCog />;
-    } if (name === 'Play') {
-      return <FaPlay />;
-    }
+    if (name === 'Settings') return <FaCog />;
+    if (name === 'Play') return <FaPlay />;
+    if (name === 'PlayAgain') return <MdReplay />;
+    if (name === 'Ranking') return <GiPodium />;
+    if (name === 'Go Home') return <FaHome />;
   }
 
   render() {
-    const { disabled, className, onClick, testId } = this.props;
-    const classe = className;
+    const { disabled, onClick, testId, classe } = this.props;
     return (
       <div>
         <button

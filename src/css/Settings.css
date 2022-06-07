@@ -11,7 +11,8 @@
   border-radius: 25px;
   display: flex;
   justify-content: space-between;
-  width: 50px;
+  padding: 10px 0;
+  width: 5rem;
 }
 
 .unchecked, .checked {
@@ -22,29 +23,33 @@
 }
 
 .icon {
-  size: 50%;
+  width: 100%;
 }
 
 .unchecked:before, .checked:before {
-  top: calc(50% + 16.5px);
+  top: calc(50% + 13px);
 }
 
 .unchecked:before {
   background-color: rgb(218, 218, 218);
-  border-radius: 25px;
+  border-radius: 50%;
   content: '';
-  height: 25px;
-  left: calc(50% - 23px);
+  height: 31px;
+  left: calc(50% - 38px);
   position: absolute;
-  width: 25px;
+  width: 31px;
 }
 
 .checked:before {
-  background-color: rgb(12, 12, 12);
-  border-radius: 25px;
+  background-color: black;
+  border-radius: 50%;
   content: '';
-  height: 25px;
-  left: calc(50% - 1px);
+  height: 31px;
+  left: calc(50% + 6px);
   position: absolute;
-  width: 25px;
+  width: 31px;
+}
+
+.moon-icon {
+  transform: translateX(23px);
 }

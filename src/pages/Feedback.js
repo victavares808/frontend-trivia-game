@@ -66,14 +66,16 @@ class Feedback extends Component {
           { this.totalQuestion() }
         </div>
         <Button
-          name="Play Again"
+          name="PlayAgain"
           testId="btn-play-again"
           onClick={ this.playAgainRedirect }
+          classe="standard-btn"
         />
         <Button
           name="Ranking"
           testId="btn-ranking"
           onClick={ this.rankingRedirect }
+          classe="standard-btn"
         />
       </div>
     );

@@ -21,7 +21,6 @@ class Ranking extends Component {
 
   render() {
     const { ranking } = this.state;
-    // console.log(ranking);
     return (
       <div>
         <div data-testid="ranking-title">
@@ -30,6 +29,7 @@ class Ranking extends Component {
         <Button
           name="Go Home"
           testId="btn-go-home"
+          classe="standard-btn"
           onClick={ this.goHomeRedirect }
         />
         {ranking.map(({ name, score, img }, index) => (
@@ -53,4 +53,4 @@ Ranking.propTypes = {
     push: PropTypes.func }),
 }.isRequired;
 
-export default Ranking;
+export default (Ranking);

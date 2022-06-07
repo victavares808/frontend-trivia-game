@@ -43,19 +43,13 @@ class Settings extends Component {
           onClick={ this.changeBGColor }
         >
           <div className={ backgroundColor === 'dark' ? 'unchecked' : 'checked' }>
-            <div className="icon">
+            <div className="icon sun-icon">
               <FiSun />
             </div>
-            <div className="icon">
+            <div className="icon moon-icon">
               <BsMoonStarsFill />
             </div>
           </div>
-
-          {/* {
-            backgroundColor === 'dark'
-              ? <FiSun />
-              : <BsMoonStarsFill />
-          } */}
         </button>
         <button
           type="button"

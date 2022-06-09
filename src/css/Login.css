@@ -46,8 +46,16 @@
 }
 
 .data-input {
+  border: 3px solid transparent;
+  border-radius: 25px;
+  box-shadow: 0 0 5px green;
   margin: 0 0 15px;
   padding: 5px 0;
+  transition: box-shadow 1s , transform 1s;
   width: 15rem;
 }
 
+.data-input:focus {
+  box-shadow: 0 0 20px green;
+  transform: scale(1.1);
+}

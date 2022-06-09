@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { BsMoonStarsFill } from 'react-icons/bs';
 import { FiSun } from 'react-icons/fi';
 import { changeBackgroundColor } from '../redux/actions';
+import Button from '../components/Button';
 import '../css/Settings.css';
 
 class Settings extends Component {
@@ -51,12 +52,12 @@ class Settings extends Component {
             </div>
           </div>
         </button>
-        <button
+        <Button
           type="button"
           onClick={ this.goBackToLoginPage }
-        >
-          Login
-        </button>
+          name="Go Home"
+          classe="standard-btn GO_HOME_BTN"
+        />
       </div>
     );
   }

@@ -1,0 +1,12 @@
+header {
+  align-items: center;
+  border: 3px solid gray;
+  border-radius: 20px;
+  box-shadow: 0 0 10px green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px 0;
+  width: 20%;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../components/Button';
+import '../css/Ranking.css';
 
 class Ranking extends Component {
   state = {
@@ -23,26 +24,31 @@ class Ranking extends Component {
     const { ranking } = this.state;
     return (
       <div>
-        <div data-testid="ranking-title">
+        <h1 data-testid="ranking-title">
           Ranking
-        </div>
+        </h1>
         <Button
           name="Go Home"
           testId="btn-go-home"
           classe="standard-btn"
           onClick={ this.goHomeRedirect }
         />
-        {ranking.map(({ name, score, img }, index) => (
-          <div key={ index }>
-            <h3 data-testid={ `player-name-${index}` }>
-              { name }
-            </h3>
-            <img src={ img } alt={ name } />
-            <h5 data-testid={ `player-score-${index}` }>
-              { score }
-            </h5>
-          </div>
-        ))}
+        <div className="ranking-container">
+          {ranking.map(({ name, score, img }, index) => (
+            <div
+              className="player-ranking-container"
+              key={ index }
+            >
+              <h3 data-testid={ `player-name-${index}` }>
+                { name }
+              </h3>
+              <img src={ img } alt={ name } />
+              <h5 data-testid={ `player-score-${index}` }>
+                { score }
+              </h5>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

@@ -81,6 +81,7 @@ class Login extends Component {
             data-testid="input-player-name"
             value={ name }
             onChange={ this.onInputChange }
+            autoComplete="off"
           />
           <input
             className="data-input"
@@ -91,6 +92,7 @@ class Login extends Component {
             data-testid="input-gravatar-email"
             value={ email }
             onChange={ this.onInputChange }
+            autoComplete="off"
           />
 
           <Button

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setScore } from '../redux/actions/index';
+import '../css/Question.css';
 
 class Question extends Component {
   nextQuestion = () => {
@@ -59,47 +60,64 @@ class Question extends Component {
       showNextBtn,
     } = this.props;
     return (
-      <div>
-        <h1>
+      <div className="question-answers-container">
+        <h1 className="timer">
+          Time:
+          {' '}
           { timer }
         </h1>
-        <h1 data-testid="question-text">{ questions[questionNumber].question }</h1>
-        <h3 data-testid="question-category">{ questions[questionNumber].category }</h3>
-        <div data-testid="answer-options">
-          {answers.map(({ answer, index, type }) => {
-            if (type === 'correct') {
-              return (
+        <h1
+          className="question-text"
+          data-testid="question-text"
+        >
+          { questions[questionNumber].question }
+        </h1>
+        <h2
+          className="question-category"
+          data-testid="question-category"
+        >
+          { questions[questionNumber].category }
+        </h2>
+        <div className="answers-nextButton-container">
+          <div
+            className="answers-container"
+            data-testid="answer-options"
+          >
+            {answers.map(({ answer, index, type }) => {
+              if (type === 'correct') {
+                return (
+                  <button
+                    type="button"
+                    key={ Math.random() }
+                    data-testid="correct-answer"
+                    id="correct"
+                    style={ showStyle ? (
+                      { border: '3px solid rgb(6, 240, 15)' })
+                      : { border: '3px solid black' } }
+                    onClick={ this.scoring }
+                    disabled={ isBtnDisabled }
+                    className="standard-btn"
+                  >
+                    { answer }
+                  </button>
+                );
+              } return (
                 <button
                   type="button"
                   key={ Math.random() }
-                  data-testid="correct-answer"
-                  id="correct"
+                  data-testid={ `wrong-answer-${index}` }
                   style={ showStyle ? (
-                    { border: '3px solid rgb(6, 240, 15)' })
-                    : { border: '3px solid black' } }
-                  onClick={ this.scoring }
+                    { border: '3px solid red' }
+                  ) : { border: '3px solid black' } }
+                  onClick={ this.notScoring }
                   disabled={ isBtnDisabled }
                   className="standard-btn"
                 >
                   { answer }
                 </button>
               );
-            } return (
-              <button
-                type="button"
-                key={ Math.random() }
-                data-testid={ `wrong-answer-${index}` }
-                style={ showStyle ? (
-                  { border: '3px solid red' }
-                ) : { border: '3px solid black' } }
-                onClick={ this.notScoring }
-                disabled={ isBtnDisabled }
-                className="standard-btn"
-              >
-                { answer }
-              </button>
-            );
-          })}
+            })}
+          </div>
           { showNextBtn ? (
             <button
               type="button"

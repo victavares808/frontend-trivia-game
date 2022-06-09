@@ -1,4 +1,7 @@
 .standard-btn {
+  background-color: #8c8c8c;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px black;
   height: 40px;
   width: 15rem;
 }
